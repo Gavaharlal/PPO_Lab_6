@@ -25,11 +25,11 @@ public class PrintVisitor implements TokenVisitor {
 
     @Override
     public void visit(List<Token> tokens) {
-        for (Token token : tokens) {
-            token.accept(this);
-            printWriter.print(' ');
+        for (int i = 0; i < tokens.size(); i++) {
+            tokens.get(i).accept(this);
+            if (i != tokens.size() - 1) {
+                printWriter.print(' ');
+            }
         }
-        printWriter.print('\n');
-        printWriter.flush();
     }
 }

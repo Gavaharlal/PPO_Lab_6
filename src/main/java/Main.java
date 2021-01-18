@@ -10,11 +10,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hhe");
         Tokenizer tokenizer = new Tokenizer();
-        List<Token> tokens = tokenizer.tokenize("(32 + 5) * (10 - 4 * 5) + 8 / 2"); // -366
+        List<Token> tokens = tokenizer.tokenize("(23 + 10) * 5 - 3 * (32 + 5) * (10 - 4 * 5) + 8 / 2"); // -366
 //        List<Token> tokens = tokenizer.tokenize("(10 - 4 * 5)"); // -364
 //        List<Token> tokens = tokenizer.tokenize("2 +  2");
 
         ParserVisitor parserVisitor = new ParserVisitor();
+//        parserVisitor.visit(List.of(new NumberToken(1), SUB, new NumberToken(2), ADD, new NumberToken(3)));
         parserVisitor.visit(tokens);
 
         PrintVisitor printVisitor = new PrintVisitor();

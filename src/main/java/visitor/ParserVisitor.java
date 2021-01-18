@@ -25,7 +25,7 @@ public class ParserVisitor extends AbstractVisitor {
             Token tmp = stack.peek();
             if (tmp instanceof OperationToken) {
                 OperationToken biToken = (OperationToken) tmp;
-                if (biToken.getPriority() > token.getPriority()) {
+                if (biToken.getPriority() >= token.getPriority()) {
                     tokens.add(biToken);
                     stack.pop();
                     continue;
@@ -43,7 +43,7 @@ public class ParserVisitor extends AbstractVisitor {
         } else {
             while (true) {
                 if (stack.isEmpty()) {
-                    throw new RuntimeException();
+                    throw new VisitException("Incorrect input");
                 }
                 Token tmp = stack.pop();
                 if (tmp == BracketToken.LEFT) {
